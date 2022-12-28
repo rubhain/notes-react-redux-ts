@@ -1,7 +1,10 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { addNote } from "../../storage/notes/notesSlice";
 
 function NoteForm() {
+  const dispatch = useDispatch();
   return (
     <div>
       <Formik
@@ -10,8 +13,7 @@ function NoteForm() {
           colour: "",
         }}
         onSubmit={async (values: { noteValue: string; colour: string }) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+          dispatch(addNote(values));
         }}
       >
         <Form>

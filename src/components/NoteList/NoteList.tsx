@@ -1,12 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function NoteList() {
+  const items = useSelector((state: any) => state.notes.items);
+
+  console.log(items);
+
   return (
     <div>
       <ul>
-        <li>Lorem ipsum dolor sit</li>
-        <li>Lorem ipsum dolor sit</li>
-        <li>Lorem ipsum dolor sit</li>
+        {items.map((item: any) => (
+          <li key={item.id}>
+            <div>{item.noteValue}</div>
+          </li>
+        ))}
       </ul>
     </div>
   );
