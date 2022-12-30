@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  
 }
 
-.list li{ display: inline;}
+.search-input{
+  text-align: left;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+

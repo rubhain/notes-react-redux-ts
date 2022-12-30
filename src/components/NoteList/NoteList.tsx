@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -10,7 +11,7 @@ function NoteList() {
     <div>
       <ul>
         {items.map((item: any) => (
-          <li key={item.id}>
+          <li key={nanoid(1)}>
             <div>{item.noteValue}</div>
           </li>
         ))}
