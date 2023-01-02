@@ -1,10 +1,25 @@
 import TextField from "@mui/material/TextField";
-import React from "react";
+import { useDispatch } from "react-redux";
+import { changeActiveFilter } from "../../storage/notes/notesSlice";
 
 function Search() {
+  const dispatch = useDispatch();
+
+  const handleOnChange = (e: any) => {
+    dispatch(changeActiveFilter(e.target.value));
+  };
+
   return (
     <div>
-      <TextField id="outlined-basic" label="Search" variant="outlined" />
+      <form>
+        <TextField
+          id="activeFilter"
+          name="activeFilter"
+          label="Search Title"
+          variant="outlined"
+          onChange={handleOnChange}
+        />
+      </form>
     </div>
   );
 }

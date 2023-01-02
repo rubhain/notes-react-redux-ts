@@ -4,17 +4,27 @@ import { useSelector } from "react-redux";
 
 function NoteList() {
   const items = useSelector((state: any) => state.notes.items);
+  const activeFilter = useSelector((state: any) => state.notes.activeFilter);
 
-  console.log(items);
+  console.log(activeFilter);
 
   return (
     <div>
       <ul>
-        {items.map((item: any) => (
-          <li key={nanoid(1)}>
-            <div>{item.noteValue}</div>
-          </li>
-        ))}
+        {items
+          .filter((note: any) => {
+            return (
+              note.noteTitle.toLowerCase().indexOf(activeFilter.toLowerCase()) >
+              -1
+            );
+          })
+          .map((item: any) => (
+            <li key={nanoid(1)}>
+              <div>
+                {item.noteTitle} - {item.colour}
+              </div>
+            </li>
+          ))}
       </ul>
     </div>
   );
