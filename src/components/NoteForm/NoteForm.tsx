@@ -21,14 +21,24 @@ function NoteForm() {
     initialValues: {
       noteTitle: "",
       noteValue: "",
-      colour: "",
+      colour: "pink",
     },
-    onSubmit: async (values: {
-      noteTitle: string;
-      noteValue: string;
-      colour: string;
-    }) => {
+    onSubmit: (
+      values: {
+        noteTitle: string;
+        noteValue: string;
+        colour: string;
+      },
+      { resetForm }
+    ) => {
       dispatch(addNote(values));
+      resetForm({
+        values: {
+          noteTitle: "",
+          noteValue: "",
+          colour: "pink",
+        },
+      });
     },
   });
 
@@ -46,6 +56,7 @@ function NoteForm() {
               maxRows={4}
               onChange={formik.handleChange}
               variant="filled"
+              value={formik.values.noteTitle}
             />
 
             <TextField
@@ -57,6 +68,7 @@ function NoteForm() {
               variant="standard"
               name="noteValue"
               onChange={formik.handleChange}
+              value={formik.values.noteValue}
             />
           </Grid>
           <Grid container direction="row" justifyContent="center">
@@ -67,6 +79,7 @@ function NoteForm() {
                   row
                   aria-labelledby="colour-selectors"
                   name="row-radio-buttons-group"
+                  value={formik.values.colour}
                 >
                   {" "}
                   <FormControlLabel
