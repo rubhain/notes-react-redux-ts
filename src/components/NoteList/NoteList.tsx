@@ -21,7 +21,7 @@ function NoteList() {
             })
             .map((item: any) => (
               <li key={nanoid(1)}>
-                {item.noteTitle} - {item.noteValue}
+                {item.noteTitle} - {item.noteValue} - {item.colour}
               </li>
             ))}
         </ul>
