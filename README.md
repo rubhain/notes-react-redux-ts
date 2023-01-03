@@ -6,4 +6,4 @@ TypeScript
 React
 Redux
 Formik
-Material UI
+MaterialUI
